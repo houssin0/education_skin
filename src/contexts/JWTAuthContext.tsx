@@ -94,7 +94,7 @@ const reducer = (state: AuthState, action: JWTActions) => {
     case "REGISTER": {
       return {
         ...state,
-        isAuthenticated: true,
+        isAuthenticated: false,
         user: action.payload.user,
       };
     }

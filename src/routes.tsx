@@ -14,12 +14,8 @@ const Loadable = (Component: LazyExoticComponent<FC>) => (props: any) =>
 
 // authentication pages
 const Login = Loadable(lazy(() => import("./pages/authentication/Login")));
-const Register = Loadable(
-  lazy(() => import("./pages/authentication/Register"))
-);
-const ForgetPassword = Loadable(
-  lazy(() => import("./pages/authentication/ForgetPassword"))
-);
+const Register = Loadable(lazy(() => import("./pages/authentication/Register")));
+const ForgetPassword = Loadable(lazy(() => import("./pages/authentication/ForgetPassword")));
 
 // Dashboard pages
 const DashboardSaaS = Loadable(lazy(() => import("./pages/dashboards/SaaS")));
@@ -28,15 +24,14 @@ const DashboardSaaS = Loadable(lazy(() => import("./pages/dashboards/SaaS")));
 const UserProfile = Loadable(lazy(() => import("./pages/UserProfile")));
 
 // user management
-const UserList = Loadable(
-  lazy(() => import("./pages/userManagement/UserList"))
-);
-const UserGrid = Loadable(
-  lazy(() => import("./pages/userManagement/UserGrid"))
-);
-const AddNewUser = Loadable(
-  lazy(() => import("./pages/userManagement/AddNewUser"))
-);
+const UserList = Loadable(lazy(() => import("./pages/userManagement/UserList")));
+const UserGrid = Loadable(lazy(() => import("./pages/userManagement/UserGrid")));
+const AddNewUser = Loadable(lazy(() => import("./pages/userManagement/AddNewUser")));
+
+// user management
+const ImageGrid = Loadable(lazy(() => import("./pages/imagedermatologie/ImageGrid")));
+const ImageDetails = Loadable(lazy(() => import("./pages/imagedermatologie/ImageDetails")));
+const AddNewImage = Loadable(lazy(() => import("./pages/imagedermatologie/AddNewImage")));
 
 // error
 const Error = Loadable(lazy(() => import("./pages/404")));
@@ -87,7 +82,19 @@ const routes = [
         path: "user-profile",
         element: <UserProfile />,
       },
-
+      {
+        path: "image-grid",
+        element: <ImageGrid />,
+      },
+      {
+        path: "add-image",
+        element: <AddNewImage />,
+      },
+      {
+        path: "image/:id", // Dynamic route for ImageDetails
+        element: <ImageDetails />,
+      },
+      
       {
         path: "user-list",
         element: <UserList />,

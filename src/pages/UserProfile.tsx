@@ -4,7 +4,7 @@ import FlexBox from "components/FlexBox";
 import SearchInput from "components/SearchInput";
 import { H3, Small } from "components/Typography";
 import UkoAvatar from "components/UkoAvatar";
-import FollowerCard from "components/userProfile/FollowerCard";
+import FollowerCard from "components/userProfile/UserInfo";
 import FriendCard from "components/userProfile/FriendCard";
 import Gallery from "components/userProfile/Gallery";
 import Profile from "components/userProfile/Profile";
@@ -100,7 +100,7 @@ const UserProfile: FC = () => {
 
             <StyledTabList onChange={handleChange}>
               <StyledTab label="Profile" value="1" />
-              <StyledTab label="Follower" value="2" />
+              <StyledTab label="User Info" value="2" />
               <StyledTab label="Friends" value="3" />
               <StyledTab label="Gallery" value="4" />
             </StyledTabList>
@@ -113,13 +113,7 @@ const UserProfile: FC = () => {
           </StyledTabPanel>
 
           <StyledTabPanel value="2">
-            <Grid container spacing={3}>
-              {followers.map((item, index) => (
-                <Grid item lg={4} sm={6} xs={12} key={index}>
-                  <FollowerCard follower={item} />
-                </Grid>
-              ))}
-            </Grid>
+                  <FollowerCard/>
           </StyledTabPanel>
 
           <StyledTabPanel value="3">

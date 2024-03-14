@@ -8,7 +8,7 @@ const userList = [
   {
     id: 1,
     role: "SA",
-    name: "Jason Alexander",
+    name: "Houssin",
     username: "jason_alexander",
     email: "demo@example.com",
     avatar: "/static/avatar/001-man.svg",

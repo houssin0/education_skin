@@ -36,6 +36,7 @@ const Login: FC = () => {
     submit: null,
     remember: true,
   };
+  
   // form field value validation schema
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -86,12 +87,12 @@ const Login: FC = () => {
             <img src="/static/logo/logo.svg" width="100%" alt="Uko Logo" />
           </Box>
           <H1 fontSize={24} fontWeight={700}>
-            Sign In to Uko
+            Sign In to SkinEdu
           </H1>
         </FlexBox>
 
         <FlexBox justifyContent="space-between" flexWrap="wrap" my="1rem">
-          <SocialIconButton
+          {/* <SocialIconButton
             // onClick={loginWithGoogle}
             startIcon={<GoogleIcon sx={{ mr: 1 }} />}
           >
@@ -102,13 +103,9 @@ const Login: FC = () => {
             startIcon={<FacebookIcon sx={{ mr: 1 }} />}
           >
             Sign in with Facebook
-          </SocialIconButton>
+          </SocialIconButton> */}
 
-          <Divider sx={{ my: 3, width: "100%", alignItems: "flex-start" }}>
-            <H3 color="text.disabled" px={1}>
-              Or
-            </H3>
-          </Divider>
+
 
           <form noValidate onSubmit={handleSubmit} style={{ width: "100%" }}>
             <FlexBox justifyContent="space-between" flexWrap="wrap">

@@ -1,7 +1,7 @@
 import { Box, Grid, useTheme } from "@mui/material";
 import Analytics from "components/Dashboards/saas/Analytics";
 import SaaSCard from "components/Dashboards/saas/Card";
-import Footer from "components/Dashboards/saas/Footer";
+// import Footer from "components/Dashboards/saas/Footer";
 import RecentOrders from "components/Dashboards/saas/RecentOrders";
 import TopSelling from "components/Dashboards/saas/TopSelling";
 import TotalSpent from "components/Dashboards/saas/TotalSpent";
@@ -20,7 +20,7 @@ const SaaS: FC = () => {
 
   const cardList = [
     {
-      price: 574,
+      price: 100,
       Icon: BucketIcon,
       title: "All Spending",
       color: theme.palette.primary.main,
@@ -68,10 +68,6 @@ const SaaS: FC = () => {
         </Grid>
         <Grid item lg={4} md={5} xs={12}>
           <TopSelling />
-        </Grid>
-
-        <Grid item xs={12}>
-          <Footer imageLink="/static/illustration/sass-dashboard.svg" />
         </Grid>
       </Grid>
     </Box>

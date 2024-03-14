@@ -7,6 +7,7 @@ import {
   Divider,
   FormControlLabel,
   FormHelperText,
+  MenuItem,
 } from "@mui/material";
 import {
   SocialIconButton,
@@ -34,10 +35,12 @@ const Register: FC = () => {
     name: "",
     email: "",
     password: "",
+    repeatPassword: "",
+    userType: "",
     terms: true,
     submit: null,
   };
-  // form field value validation schema
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     email: Yup.string()
@@ -47,6 +50,11 @@ const Register: FC = () => {
     password: Yup.string()
       .min(6, "Password should be of minimum 6 characters length")
       .required("Password is required"),
+    repeatPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Repeat password is required"),
+    userType: Yup.string().required("User type is required"),
+    terms: Yup.boolean().oneOf([true], "You must accept the terms and conditions"),
   });
 
   const { errors, values, touched, handleBlur, handleChange, handleSubmit } =
@@ -59,7 +67,7 @@ const Register: FC = () => {
           await register(values.email, values.password, values.name);
           setLoading(false);
           toast.success("You registered successfully");
-          navigate("/dashboard");
+          navigate("/login");
         } catch (error: any) {
           setError(error?.message);
           setLoading(false);
@@ -87,30 +95,11 @@ const Register: FC = () => {
             <img src="/static/logo/logo.svg" width="100%" alt="Uko Logo" />
           </Box>
           <H1 fontSize={24} fontWeight={700}>
-            Get started with Uko
+            Get started with SkinEdu
           </H1>
         </FlexBox>
 
         <FlexBox justifyContent="space-between" flexWrap="wrap" my="1rem">
-          <SocialIconButton
-            // onClick={loginWithGoogle}
-            startIcon={<GoogleIcon sx={{ mr: "0.5rem" }} />}
-          >
-            Sign up with Google
-          </SocialIconButton>
-          <SocialIconButton
-            // onClick={loginWithFacebook}
-            startIcon={<FacebookIcon sx={{ mr: "0.5rem" }} />}
-          >
-            Sign up with Facebook
-          </SocialIconButton>
-
-          <Divider sx={{ my: 3, width: "100%", alignItems: "flex-start" }}>
-            <H3 color="text.disabled" px={1}>
-              Or
-            </H3>
-          </Divider>
-
           <form noValidate onSubmit={handleSubmit} style={{ width: "100%" }}>
             <FlexBox justifyContent="space-between" flexWrap="wrap">
               <TextFieldWrapper>
@@ -124,6 +113,7 @@ const Register: FC = () => {
                   value={values.name || ""}
                   error={Boolean(touched.name && errors.name)}
                   helperText={touched.name && errors.name}
+                  margin="normal"
                 />
               </TextFieldWrapper>
 
@@ -138,6 +128,39 @@ const Register: FC = () => {
                   value={values.email || ""}
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
+                  margin="normal"
+                />
+              </TextFieldWrapper>
+            </FlexBox>
+
+            <FlexBox justifyContent="space-between" flexWrap="wrap">
+              <TextFieldWrapper>
+                <LightTextField
+                  fullWidth
+                  name="password"
+                  type="password"
+                  label="Password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.password || ""}
+                  error={Boolean(touched.password && errors.password)}
+                  helperText={touched.password && errors.password}
+                  margin="normal"
+                />
+              </TextFieldWrapper>
+
+              <TextFieldWrapper>
+                <LightTextField
+                  fullWidth
+                  name="repeatPassword"
+                  type="password"
+                  label="Repeat Password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.repeatPassword || ""}
+                  error={Boolean(touched.repeatPassword && errors.repeatPassword)}
+                  helperText={touched.repeatPassword && errors.repeatPassword}
+                  margin="normal"
                 />
               </TextFieldWrapper>
             </FlexBox>
@@ -145,15 +168,19 @@ const Register: FC = () => {
             <TextFieldWrapper sx={{ mt: 2, width: "100%" }}>
               <LightTextField
                 fullWidth
-                name="password"
-                type="password"
-                label="Password"
+                select
+                name="userType"
+                label="Select User Type"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.password || ""}
-                error={Boolean(touched.password && errors.password)}
-                helperText={touched.password && errors.password}
-              />
+                value={values.userType || ""}
+                error={Boolean(touched.userType && errors.userType)}
+                helperText={touched.userType && errors.userType}
+                margin="normal"
+              >
+                <MenuItem value="med_student">Medicine Student</MenuItem>
+                <MenuItem value="med_teacher">Medicine Teacher</MenuItem>
+              </LightTextField>
             </TextFieldWrapper>
 
             <FormControlLabel

@@ -1,7 +1,9 @@
 import {
-  GridView as UserGridIcon,
+  Group as UserGridIcon,
   Login as LoginIcon,
-  PersonAdd as AddUserIcon,
+  Collections as ImagesIcon,
+  
+  // PersonAdd as AddUserIcon,
 } from "@mui/icons-material";
 import DashboardIcon from "./Dashboard";
 import SessionsIcon from "./Sessions";
@@ -11,10 +13,11 @@ import UserProfileIcon from "./UserProfile";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   LoginIcon,
-  AddUserIcon,
+  // AddUserIcon,
   SessionsIcon,
   UserGridIcon,
   DashboardIcon,
   UserProfileIcon,
   UserManagementIcon,
+  ImagesIcon
 };
