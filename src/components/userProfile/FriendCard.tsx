@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import { H6, Small } from "components/Typography";
 import FacebookIcon from "icons/FacebookIcon";
 import React, { FC } from "react";
+import useTitle from "hooks/useTitle";
 
 // component props interface
 interface FriendCardProps {
@@ -19,6 +20,8 @@ interface FriendCardProps {
 }
 
 const FriendCard: FC<FriendCardProps> = () => {
+  useTitle("User Friends");
+
   return (
     <Card sx={{ textAlign: "center", padding: 3 }}>
       <Box

@@ -1,5 +1,5 @@
-import { Box, Button, Typography, Grid, Hidden } from "@mui/material";
-import React, { FC, useState } from "react";
+import { Box, Button, Typography, Grid } from "@mui/material";
+import { FC } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';

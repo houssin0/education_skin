@@ -3,22 +3,18 @@ import {
   Box,
   Button,
   Card,
-  Divider,
   FormControlLabel,
   FormHelperText,
   Switch,
 } from "@mui/material";
 import {
-  SocialIconButton,
   TextFieldWrapper,
 } from "components/authentication/StyledComponents";
 import FlexBox from "components/FlexBox";
 import LightTextField from "components/LightTextField";
-import { H1, H3, Paragraph, Small } from "components/Typography";
+import { H1, Paragraph, Small } from "components/Typography";
 import { useFormik } from "formik";
 import useAuth from "hooks/useAuth";
-import FacebookIcon from "icons/FacebookIcon";
-import GoogleIcon from "icons/GoogleIcon";
 import { FC, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";

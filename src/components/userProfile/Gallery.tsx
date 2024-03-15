@@ -2,8 +2,11 @@ import { TabContext, TabList } from "@mui/lab";
 import { Box, Card, Grid, Tab } from "@mui/material";
 import { FC, useState } from "react";
 import LightBox from "react-image-lightbox";
+import useTitle from "hooks/useTitle";
 
 const Gallery: FC = () => {
+    useTitle("User Gallery");
+
   const [value, setValue] = useState("");
   const [photoIndex, setPhotoIndex] = useState(0);
   const [openLightBox, setOpenLightBox] = useState(false);

@@ -7,10 +7,9 @@ import {
   Grid,
   IconButton,
   styled,
-  Switch,
 } from "@mui/material";
 import LightTextField from "components/LightTextField";
-import { Small, Tiny } from "components/Typography";
+import { Small } from "components/Typography";
 import { useFormik } from "formik";
 import useTitle from "hooks/useTitle";
 import { FC } from "react";
@@ -45,18 +44,11 @@ const UploadButton = styled(Box)(({ theme }) => ({
       : alpha(theme.palette.background.paper, 0.9),
 }));
 
-const SwitchWrapper = styled(Box)(() => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  width: "100%",
-  marginTop: 10,
-}));
 
 
 const FollowerCard: FC = () => {
   // change navbar title
-  useTitle("Add New User");
+  useTitle("User Info");
 
   const initialValues = {
     fullName: "",
@@ -252,7 +244,7 @@ const FollowerCard: FC = () => {
 
                   <Grid item xs={12}>
                     <Button type="submit" variant="contained">
-                      Create User
+                      Submit
                     </Button>
                   </Grid>
                 </Grid>

@@ -14,7 +14,7 @@ import { FC } from "react";
 
 const SaaS: FC = () => {
   // change navbar title
-  useTitle("Saas");
+  useTitle("Dashboard");
 
   const theme = useTheme();
 

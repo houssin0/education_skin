@@ -57,13 +57,6 @@ const TextBelowIcon = styled(Box)(({ theme }) => ({
   zIndex: 1,
 }));
 
-const SwitchWrapper = styled(Box)(() => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  width: "100%",
-  marginTop: 10,
-}));
 
 const AddNewImage: FC = () => {
   // change navbar title

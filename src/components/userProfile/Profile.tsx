@@ -7,6 +7,7 @@ import FollowerIcon from "icons/FollowerIcon";
 import UserPlusIcon from "icons/UserPlusIcon";
 import { FC, MouseEvent, useState } from "react";
 import PostCard from "./PostCard";
+import useTitle from "hooks/useTitle";
 
 // styled components
 const IconWrapper = styled(Box)<{ color?: string }>(({ theme, color }) => ({
@@ -31,6 +32,8 @@ const FollowWrapper = styled(Box)(() => ({
 }));
 
 const Profile: FC = () => {
+  useTitle("User Profile");
+
   const [moreEl, setMoreEl] = useState<null | HTMLElement>(null);
   const handleMoreOpen = (event: MouseEvent<HTMLButtonElement>) => {
     setMoreEl(event.currentTarget);
