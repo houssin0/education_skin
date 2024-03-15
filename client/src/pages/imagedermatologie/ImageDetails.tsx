@@ -41,6 +41,12 @@ const ImageDetails: FC = () => {
             {image.publisher}
           </Typography>
           <Typography variant="h6" gutterBottom>
+            Type:
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            {image.type}
+          </Typography>
+          <Typography variant="h6" gutterBottom>
             Date:
           </Typography>
           <Typography variant="body1" gutterBottom>
