@@ -1,102 +1,200 @@
-import { Box, Button, Grid, styled, Menu, MenuItem } from "@mui/material";
-import FlexBox from "components/FlexBox";
-import SearchInput from "components/SearchInput";
-import ImageCard from "./ImageCard";
+import { PhotoCamera } from "@mui/icons-material";
+import {
+  alpha,
+  Box,
+  Button,
+  Card,
+  Grid,
+  IconButton,
+  styled
+} from "@mui/material";
+import LightTextField from "components/LightTextField";
+import { Small } from "components/Typography";
+import { useFormik } from "formik";
 import useTitle from "hooks/useTitle";
-import { FC, useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { ImageList } from "./ImageList";
+import { FC, useState } from "react";
+import * as Yup from "yup";
 
-// styled component
-const StyledFlexBox = styled(FlexBox)(({ theme }) => ({
-  justifyContent: "space-between",
+// styled components
+const ButtonWrapper = styled(Box)(({ theme }) => ({
+  position: "relative", // Added for positioning the text
+  width: 100,
+  height: 100,
+  display: "flex",
+  borderRadius: "50%",
   alignItems: "center",
-  flexWrap: "wrap",
-  marginBottom: 20,
-  [theme.breakpoints.down(500)]: {
-    width: "100%",
-    "& .MuiInputBase-root": { maxWidth: "100%" },
-    "& .MuiButton-root": {
-      width: "100%",
-      marginTop: 15,
-    },
-  },
+  justifyContent: "center",
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? theme.palette.secondary[200]
+      : alpha(theme.palette.primary[100], 0.1),
 }));
 
-const ImageGrid: FC = () => {
+const UploadButton = styled(Box)(({ theme }) => ({
+  width: 50,
+  height: 50,
+  display: "flex",
+  borderRadius: "50%",
+  border: "2px solid",
+  alignItems: "center",
+  justifyContent: "center",
+  borderColor: theme.palette.background.paper,
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? theme.palette.secondary[400]
+      : alpha(theme.palette.background.paper, 0.9),
+}));
+
+const TextBelowIcon = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  bottom: -25, // Adjust as needed
+  left: "50%",
+  transform: "translateX(-50%)",
+  backgroundColor: alpha(theme.palette.common.black, 0.8),
+  color: theme.palette.common.white,
+  padding: "2px 8px",
+  borderRadius: 4,
+  zIndex: 1,
+}));
+
+
+const AddNewImage: FC = () => {
   // change navbar title
-  useTitle("Image Grid");
+  useTitle("Add New Image");
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const initialValues = {
+    title: "",
+    description: "",
+  };
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedDisease, setSelectedDisease] = useState<string>("All");
+  const validationSchema = Yup.object().shape({
+    title: Yup.string().required("Title is Required!"),
+    description: Yup.string().required("Description is Required!"),
+  });
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const category = params.get("category");
-    if (category && category !== "All") {
-      setSelectedDisease(category);
+  const [image, setImage] = useState<File | null>(null);
+  const [uploaded, setUploaded] = useState<boolean>(false);
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setImage(event.target.files[0]);
+      setUploaded(true);
     }
-  }, [location.search]);
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleDiseaseSelect = (disease: string) => {
-    setSelectedDisease(disease);
-    setAnchorEl(null);
-    navigate(`/dashboard/image-grid?category=${disease}`);
-  };
+  const { values, errors, handleChange, handleSubmit, touched } = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: async (values) => {
+      // Handle form submission here, e.g., send data to backend
+      console.log(values); // Log the values to console for now
+      console.log(image); // Log the uploaded image file
+    },
+  });
 
   return (
     <Box pt={2} pb={4}>
-      <StyledFlexBox>
-        <SearchInput placeholder="Search image..." />
-        <Button variant="contained" onClick={() => navigate("/dashboard/add-image")}>
-          Add New Image
-        </Button>
-        <Button variant="outlined" onClick={handleClick}>
-          {selectedDisease}
-        </Button>
-        <Menu
-          id="disease-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-        >
-          <MenuItem onClick={() => handleDiseaseSelect("All")}>All</MenuItem>
-          {/* Replace 'disease' with the actual list of diseases */}
-          {/* For demonstration, I'm assuming the diseases are stored in an array */}
-          {["Acné", "Eczéma", "Psoriasis", "Urticaire", "Kératose pilaire", "Rosacée", "Dermatite de contact", "Vitiligo", "Herpès", "Cancer de la peau"].map((disease) => (
-            <MenuItem key={disease} onClick={() => handleDiseaseSelect(disease)}>{disease}</MenuItem>
-          ))}
-        </Menu>
-      </StyledFlexBox>
+      <Card sx={{ padding: 4 }}>
+        <Grid container spacing={3}>
+          <Grid item md={4} xs={12}>
+            <Card
+              sx={{
+                padding: 3,
+                boxShadow: 2,
+                minHeight: 400,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <ButtonWrapper>
+                <UploadButton>
+                  <label htmlFor="upload-btn">
+                    <input
+                      accept="image/*"
+                      id="upload-btn"
+                      type="file"
+                      style={{ display: "none" }}
+                      onChange={handleImageUpload}
+                    />
+                    <IconButton component="span">
+                      <PhotoCamera sx={{ fontSize: 26, color: "white" }} />
+                    </IconButton>
+                  </label>
+                </UploadButton>
+                {!uploaded && (
+                  <TextBelowIcon>Uploading Image...</TextBelowIcon>
+                )}
+              </ButtonWrapper>
 
-      <Grid container spacing={3}>
-        {ImageList.filter((image) => selectedDisease === "All" || image.type === selectedDisease).map((image, index) => (
-          <Grid item xs={12} sm={6} md={4} key={image.id}>
-            <ImageCard image={image} />
+              {uploaded && (
+                <Box mt={2}>
+                  <Small
+                    marginTop={2}
+                    maxWidth={200}
+                    lineHeight={1.9}
+                    display="block"
+                    textAlign="center"
+                    color="text.disabled"
+                  >
+                    Image Uploaded
+                  </Small>
+                  {image && (
+                    <Box mt={1}>
+                      <img
+                        src={URL.createObjectURL(image)}
+                        alt="Uploaded"
+                        style={{ maxWidth: 200, maxHeight: 200 }}
+                      />
+                    </Box>
+                  )}
+                </Box>
+              )}
+            </Card>
           </Grid>
-        ))}
-      </Grid>
+          <Grid item md={8} xs={12}>
+            <Card sx={{ padding: 3, boxShadow: 2 }}>
+              <form onSubmit={handleSubmit}>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <LightTextField
+                      fullWidth
+                      name="title"
+                      placeholder="Image Title"
+                      value={values.title}
+                      onChange={handleChange}
+                      error={Boolean(touched.title && errors.title)}
+                      helperText={touched.title && errors.title}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <LightTextField
+                      multiline
+                      fullWidth
+                      rows={6}
+                      name="description"
+                      placeholder="Description"
+                      value={values.description}
+                      onChange={handleChange}
+                      error={Boolean(touched.description && errors.description)}
+                      helperText={touched.description && errors.description}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <Button type="submit" variant="contained">
+                      Add Image
+                    </Button>
+                  </Grid>
+                </Grid>
+              </form>
+            </Card>
+          </Grid>
+        </Grid>
+      </Card>
     </Box>
   );
 };
 
-export default ImageGrid;
+export default AddNewImage;

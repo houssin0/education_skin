@@ -32,7 +32,7 @@ const ImageGrid: FC = () => {
 
   // State for managing dropdown menu
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedDisease, setSelectedDisease] = useState<string>("All");
+  const [selectedDisease, setSelectedDisease] = useState<string>("Filter");
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -50,7 +50,7 @@ const ImageGrid: FC = () => {
   return (
     <Box pt={2} pb={4}>
       <StyledFlexBox>
-        <SearchInput placeholder="Search image..." />
+        <SearchInput placeholder="Search image...!" />
         
         <Button variant="outlined" onClick={handleClick}>
           {selectedDisease}
@@ -61,7 +61,7 @@ const ImageGrid: FC = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={() => handleDiseaseSelect("All")}>All</MenuItem>
+          <MenuItem onClick={() => handleDiseaseSelect("Filter")}>All</MenuItem>
           {["Acné", "Eczéma", "Psoriasis", "Urticaire", "Kératose pilaire", "Rosacée", "Dermatite de contact", "Vitiligo", "Herpès", "Cancer de la peau"].map((disease) => (
             <MenuItem key={disease} onClick={() => handleDiseaseSelect(disease)}>{disease}</MenuItem>
           ))}
@@ -72,7 +72,7 @@ const ImageGrid: FC = () => {
       </StyledFlexBox>
 
       <Grid container spacing={3}>
-        {ImageList.filter((image) => selectedDisease === "All" || image.type === selectedDisease).map((image, index) => (
+        {ImageList.filter((image) => selectedDisease === "Filter" || image.type === selectedDisease).map((image, index) => (
           <Grid item xs={12} sm={6} md={4} key={image.id}>
             <ImageCard image={image} />
           </Grid>
