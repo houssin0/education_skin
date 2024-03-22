@@ -1,40 +1,48 @@
-import { InputBase, InputBaseProps, styled } from "@mui/material";
-import SearchIcon from "icons/SearchIcon";
-import { FC } from "react";
+import { TextField, Autocomplete } from "@mui/material";
+import { FC, useState } from "react";
+import SearchIcon from '@mui/icons-material/Search';
 
-// styled component
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  height: 45,
-  fontSize: 13,
-  width: "100%",
-  maxWidth: 270,
-  fontWeight: 500,
-  padding: "0 1rem",
-  borderRadius: "8px",
-  border: "1px solid ",
-  borderColor:
-    theme.palette.mode === "light"
-      ? theme.palette.secondary[300]
-      : theme.palette.divider,
+interface Image {
+  id: string;
+  title: string;
+  description: string;
+  publisher: string;
+  img: string;
+  date: string;
+  type: string;
+}
 
-  color: theme.palette.text.primary,
-  backgroundColor: theme.palette.background.paper,
-  [theme.breakpoints.down(500)]: { maxWidth: "100%" },
-}));
+interface Props {
+  images: Image[];
+  onSearch: (searchTerm: string) => void;
+}
 
-const SearchInput: FC<InputBaseProps> = (props) => {
+const SearchInput: FC<Props> = ({ images, onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    onSearch(value); // Pass the search term to the parent component
+  };
+
   return (
-    <StyledInputBase
-      {...props}
-      startAdornment={
-        <SearchIcon
-          sx={{
-            fontSize: 16,
-            marginRight: 1,
-            color: "text.disabled",
+    <Autocomplete
+      options={images}
+      getOptionLabel={(image) => image.title}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Search"
+          variant="outlined"
+          placeholder="Search image..."
+          style={{ minWidth: 200 }}
+          InputProps={{
+            startAdornment: <SearchIcon />,
           }}
+          onChange={handleInputChange}
         />
-      }
+      )}
     />
   );
 };

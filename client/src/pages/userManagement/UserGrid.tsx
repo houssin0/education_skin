@@ -32,7 +32,7 @@ const UserGrid: FC = () => {
   return (
     <Box pt={2} pb={4}>
       <StyledFlexBox>
-        <SearchInput placeholder="Search user..." />
+        {/* <SearchInput placeholder="Search user..." /> */}
         <Button variant="contained" onClick={handleAddUser}>
           Add New User
         </Button>

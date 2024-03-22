@@ -118,7 +118,7 @@ const UserProfile: FC = () => {
 
           <StyledTabPanel value="3">
             <H3>Friends</H3>
-            <SearchInput placeholder="Search Friends..." sx={{ my: 2 }} />
+            {/* <SearchInput placeholder="Search Friends..." sx={{ my: 2 }} /> */}
 
             <Grid container spacing={3}>
               {friends.map((friend, index) => (
