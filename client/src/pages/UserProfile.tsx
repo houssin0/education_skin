@@ -1,7 +1,6 @@
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Box, Card, Grid, styled, Tab } from "@mui/material";
 import FlexBox from "components/FlexBox";
-import SearchInput from "components/SearchInput";
 import { H3, Small } from "components/Typography";
 import UkoAvatar from "components/UkoAvatar";
 import FollowerCard from "components/userProfile/UserInfo";

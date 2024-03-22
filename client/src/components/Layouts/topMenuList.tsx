@@ -12,6 +12,11 @@ const index = [
     path: "/dashboard/image-grid",
   },
   {
+    title: "Add New Image",
+    Icon: Icons.AddNewImage,
+    path: "/dashboard/add-image",
+  },
+  {
     title: "User Grid",
     Icon: Icons.UserGridIcon,
     path: "/dashboard/user-grid",

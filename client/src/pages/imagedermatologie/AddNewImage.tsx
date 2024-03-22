@@ -6,18 +6,22 @@ import {
   Card,
   Grid,
   IconButton,
-  styled
+  MenuItem,
+  styled,
+  Select,
 } from "@mui/material";
 import LightTextField from "components/LightTextField";
 import { Small } from "components/Typography";
 import { useFormik } from "formik";
 import useTitle from "hooks/useTitle";
+import { useNavigate } from "react-router-dom";
 import { FC, useState } from "react";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
 
-// styled components
+
 const ButtonWrapper = styled(Box)(({ theme }) => ({
-  position: "relative", // Added for positioning the text
+  position: "relative",
   width: 100,
   height: 100,
   display: "flex",
@@ -47,7 +51,7 @@ const UploadButton = styled(Box)(({ theme }) => ({
 
 const TextBelowIcon = styled(Box)(({ theme }) => ({
   position: "absolute",
-  bottom: -25, // Adjust as needed
+  bottom: -25,
   left: "50%",
   transform: "translateX(-50%)",
   backgroundColor: alpha(theme.palette.common.black, 0.8),
@@ -57,19 +61,20 @@ const TextBelowIcon = styled(Box)(({ theme }) => ({
   zIndex: 1,
 }));
 
-
 const AddNewImage: FC = () => {
-  // change navbar title
   useTitle("Add New Image");
+  const navigate = useNavigate();
 
   const initialValues = {
     title: "",
     description: "",
+    type: "",
   };
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Title is Required!"),
     description: Yup.string().required("Description is Required!"),
+    type: Yup.string().required("Type is Required!"),
   });
 
   const [image, setImage] = useState<File | null>(null);
@@ -83,14 +88,15 @@ const AddNewImage: FC = () => {
   };
 
   const { values, errors, handleChange, handleSubmit, touched } = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: async (values) => {
-      // Handle form submission here, e.g., send data to backend
-      console.log(values); // Log the values to console for now
-      console.log(image); // Log the uploaded image file
-    },
-  });
+  initialValues,
+  validationSchema,
+  onSubmit: async (values) => {
+    console.log("Form Values:", values); // Log form values
+    toast.success("The image uploaded successfully",{duration:4000});
+    navigate("/dashboard/image-grid");
+  },
+});
+
 
   return (
     <Box pt={2} pb={4}>
@@ -177,9 +183,52 @@ const AddNewImage: FC = () => {
                       placeholder="Description"
                       value={values.description}
                       onChange={handleChange}
-                      error={Boolean(touched.description && errors.description)}
+                      error={Boolean(
+                        touched.description && errors.description
+                      )}
                       helperText={touched.description && errors.description}
                     />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <Select
+                      fullWidth
+                      name="type"
+                      value={values.type}
+                      onChange={handleChange}
+                      displayEmpty
+                      error={Boolean(touched.type && errors.type)}
+                      inputProps={{ "aria-label": "type" }}
+                    >
+                      <MenuItem value="" disabled>
+                        Select Type
+                      </MenuItem>
+                      {[
+                        "Eczema",
+                        "Psoriasis",
+                        "Acne",
+                        "Skin Cancer",
+                        "Dermatitis",
+                        "Rosacea",
+                        "Vitiligo",
+                        "Hives",
+                        "Benign Growths",
+                        "Precancerous Lesions",
+                        "Autoimmune Disorders",
+                        "Fungal Infections",
+                        "Bacterial Infections",
+                        "Viral Infections",
+                        "Skin Rashes",
+                        "Common Skin Conditions",
+                        "Chronic Skin Conditions",
+                        "Benign Tumors",
+                        "Hair Disorders",
+                      ].map((type) => (
+                        <MenuItem key={type} value={type}>
+                          {type}
+                        </MenuItem>
+                      ))}
+                    </Select>
                   </Grid>
 
                   <Grid item xs={12}>

@@ -2,6 +2,7 @@ import {
   Group as UserGridIcon,
   Login as LoginIcon,
   Collections as ImagesIcon,
+  AddAPhoto as AddNewImage
   
   // PersonAdd as AddUserIcon,
 } from "@mui/icons-material";
@@ -19,5 +20,6 @@ export default {
   DashboardIcon,
   UserProfileIcon,
   UserManagementIcon,
-  ImagesIcon
+  ImagesIcon,
+  AddNewImage
 };

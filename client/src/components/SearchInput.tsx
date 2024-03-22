@@ -1,5 +1,5 @@
 import { TextField, Autocomplete } from "@mui/material";
-import { FC, useState } from "react";
+import { FC } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 
 interface Image {
@@ -18,11 +18,8 @@ interface Props {
 }
 
 const SearchInput: FC<Props> = ({ images, onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    setSearchTerm(value);
     onSearch(value); // Pass the search term to the parent component
   };
 

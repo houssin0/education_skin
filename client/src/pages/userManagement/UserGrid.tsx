@@ -1,6 +1,5 @@
 import { Box, Button, Grid, styled } from "@mui/material";
 import FlexBox from "components/FlexBox";
-import SearchInput from "components/SearchInput";
 import UserCard from "components/userManagement/UserCard";
 import useTitle from "hooks/useTitle";
 import { FC } from "react";

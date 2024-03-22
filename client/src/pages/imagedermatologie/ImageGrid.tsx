@@ -38,11 +38,11 @@ const ImageGrid: FC = () => {
   const [sortAnchorEl, setSortAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedDisease, setSelectedDisease] = useState<string>("Filter");
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [sortOption, setSortOption] = useState<string>("None");
+  const [sortOption, setSortOption] = useState<string>("Sort");
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const option = params.get('option') || 'None';
+    const option = params.get('option') || 'Sort';
     const disease = params.get('disease') || 'Filter';
     setSortOption(option);
     setSelectedDisease(disease);
@@ -126,7 +126,7 @@ const ImageGrid: FC = () => {
           </Menu>
         </Box>
         <Box>
-          <Button variant="contained" onClick={handleSortClick}>
+          <Button variant="outlined" onClick={handleSortClick}>
             {sortOption}
           </Button>
           <Menu
