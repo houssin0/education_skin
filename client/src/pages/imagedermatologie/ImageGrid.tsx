@@ -1,5 +1,5 @@
 // ImageGrid.tsx
-import { Box, Button, Grid, styled, MenuItem, Menu } from "@mui/material";
+import { Box, Button, Grid, styled, MenuItem, Menu, IconButton } from "@mui/material";
 import FlexBox from "components/FlexBox";
 import SearchInput from "components/SearchInput";
 import ImageCard from "./ImageCard";
@@ -7,8 +7,9 @@ import useTitle from "hooks/useTitle";
 import { FC, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ImageList } from "./ImageList";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-// styled component
+// Styled component
 const StyledFlexBox = styled(FlexBox)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
@@ -25,7 +26,7 @@ const StyledFlexBox = styled(FlexBox)(({ theme }) => ({
 }));
 
 const ImageGrid: FC = () => {
-  // change navbar title
+  // Change navbar title
   useTitle("Image Grid");
 
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ const ImageGrid: FC = () => {
     }
     navigate(`?${params.toString()}`, { replace: true });
   };
-  
+
   const handleSort = (option: string) => {
     setSortOption(option);
     setSortAnchorEl(null);
@@ -90,7 +91,6 @@ const ImageGrid: FC = () => {
     }
     navigate(`?${params.toString()}`, { replace: true });
   };
-  
 
   const sortedImages = ImageList.sort((a, b) => {
     switch (sortOption) {
@@ -110,8 +110,11 @@ const ImageGrid: FC = () => {
       <StyledFlexBox>
         <SearchInput images={ImageList} onSearch={handleSearch} />
         <Box>
-          <Button variant="outlined" onClick={handleFilterClick}>
+          <Button variant="outlined" onClick={handleFilterClick} sx={{ paddingRight: '10px' }}>
             {selectedDisease}
+            <IconButton size="small" disabled>
+              <KeyboardArrowDownIcon />
+            </IconButton>
           </Button>
           <Menu
             id="filter-menu"
@@ -120,14 +123,21 @@ const ImageGrid: FC = () => {
             onClose={handleClose}
           >
             <MenuItem onClick={() => handleDiseaseSelect("Filter")}>All</MenuItem>
-            {["Eczema", "Psoriasis", "Acne", "Skin Cancer", "Dermatitis", "Rosacea", "Vitiligo", "Hives", "Benign Growths", "Precancerous Lesions", "Autoimmune Disorders", "Fungal Infections", "Bacterial Infections", "Viral Infections", "Skin Rashes", "Common Skin Conditions", "Chronic Skin Conditions", "Benign Tumors", "Hair Disorders"].map((disease) => (
+            {["Eczema", "Psoriasis", "Acne", "Skin Cancer", "Dermatitis", "Rosacea", "Vitiligo",
+              "Hives", "Benign Growths", "Precancerous Lesions", "Autoimmune Disorders", "Fungal Infections", 
+              "Bacterial Infections", "Viral Infections", "Skin Rashes", "Benign Skin Growths",
+              "Common Skin Conditions", "Chronic Skin Conditions", "Benign Tumors", "Hair Disorders", 
+              "Benign Skin Conditions", "Skin Conditions"].map((disease) => (
               <MenuItem key={disease} onClick={() => handleDiseaseSelect(disease)}>{disease}</MenuItem>
             ))}
           </Menu>
         </Box>
         <Box>
-          <Button variant="outlined" onClick={handleSortClick}>
+          <Button variant="outlined" onClick={handleSortClick} sx={{ paddingRight: '10px' }}>
             {sortOption}
+            <IconButton size="small" disabled>
+              <KeyboardArrowDownIcon />
+            </IconButton>
           </Button>
           <Menu
             id="sort-menu"
@@ -148,7 +158,7 @@ const ImageGrid: FC = () => {
 
       <Grid container spacing={3}>
         {sortedImages.filter((image) =>
-          (selectedDisease === "Filter" || image.type === selectedDisease) &&
+          (selectedDisease === "Filter" || image.diseaseId === selectedDisease) &&
           (searchTerm === "" || image.title.toLowerCase().includes(searchTerm.toLowerCase()))
         ).map((image, index) => (
           <Grid item xs={12} sm={6} md={4} key={image.id}>

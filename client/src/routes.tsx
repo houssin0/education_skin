@@ -28,10 +28,14 @@ const UserList = Loadable(lazy(() => import("./pages/userManagement/UserList")))
 const UserGrid = Loadable(lazy(() => import("./pages/userManagement/UserGrid")));
 const AddNewUser = Loadable(lazy(() => import("./pages/userManagement/AddNewUser")));
 
-// user management
+// image management
 const ImageGrid = Loadable(lazy(() => import("./pages/imagedermatologie/ImageGrid")));
 const ImageDetails = Loadable(lazy(() => import("./pages/imagedermatologie/ImageDetails")));
 const AddNewImage = Loadable(lazy(() => import("./pages/imagedermatologie/AddNewImage")));
+
+// image management
+const DiseaseGrid = Loadable(lazy(() => import("./pages/diseaseDermatologie/DiseaseGrid")));
+const DiseaseDetails = Loadable(lazy(() => import("./pages/diseaseDermatologie/DiseaseDetails")));
 
 // error
 const Error = Loadable(lazy(() => import("./pages/404")));
@@ -87,6 +91,10 @@ const routes = [
         element: <ImageGrid />,
       },
       {
+        path: "disease-grid",
+        element: <DiseaseGrid />,
+      },
+      {
         path: "add-image",
         element: <AddNewImage />,
       },
@@ -94,6 +102,10 @@ const routes = [
         path: "image/:id", // Dynamic route for ImageDetails
         element: <ImageDetails />,
       },
+      {
+        path: "disease/:id",
+        element: <DiseaseDetails />,
+      },      
       
       {
         path: "user-list",

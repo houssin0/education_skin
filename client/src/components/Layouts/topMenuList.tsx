@@ -12,6 +12,11 @@ const index = [
     path: "/dashboard/image-grid",
   },
   {
+    title: "Disease Grid",
+    Icon: Icons.DiseaseIcon,
+    path: "/dashboard/disease-grid",
+  },
+  {
     title: "Add New Image",
     Icon: Icons.AddNewImage,
     path: "/dashboard/add-image",

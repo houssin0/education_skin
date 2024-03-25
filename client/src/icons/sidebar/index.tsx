@@ -2,8 +2,8 @@ import {
   Group as UserGridIcon,
   Login as LoginIcon,
   Collections as ImagesIcon,
-  AddAPhoto as AddNewImage
-  
+  AddAPhoto as AddNewImage,
+  ViewList as DiseaseIcon
   // PersonAdd as AddUserIcon,
 } from "@mui/icons-material";
 import DashboardIcon from "./Dashboard";
@@ -14,12 +14,12 @@ import UserProfileIcon from "./UserProfile";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   LoginIcon,
-  // AddUserIcon,
   SessionsIcon,
   UserGridIcon,
   DashboardIcon,
   UserProfileIcon,
   UserManagementIcon,
   ImagesIcon,
+  DiseaseIcon,
   AddNewImage
 };

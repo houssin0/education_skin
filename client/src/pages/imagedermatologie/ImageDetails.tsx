@@ -3,6 +3,7 @@ import { FC } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+import { DiseaseList } from "../diseaseDermatologie/DiseaseList"; // Import the DiseaseList
 
 const ImageDetails: FC = () => {
   const navigate = useNavigate();
@@ -13,6 +14,9 @@ const ImageDetails: FC = () => {
     navigate(-1); // Navigate back to the previous page
   };
 
+  // Find the disease object from DiseaseList
+  const disease = DiseaseList.find((disease) => disease.id === image.diseaseId);
+
   return (
     <Box p={3}>
       <Button variant="contained" onClick={handleReturnClick} sx={{ mb: 3 }}>
@@ -20,12 +24,12 @@ const ImageDetails: FC = () => {
       </Button>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-        <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden' }}>
-      <InnerImageZoom src={image.img}  zoomScale={2} />
-    </div>
+          <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden' }}>
+            <InnerImageZoom src={image.img} zoomScale={2} />
+          </div>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Typography variant="h4" gutterBottom >
+          <Typography variant="h4" gutterBottom>
             {image.title}
           </Typography>
           <Typography variant="h6" gutterBottom>
@@ -44,7 +48,7 @@ const ImageDetails: FC = () => {
             Type:
           </Typography>
           <Typography variant="body1" gutterBottom>
-            {image.type}
+            {disease ? disease.title : ''}
           </Typography>
           <Typography variant="h6" gutterBottom>
             Date:
