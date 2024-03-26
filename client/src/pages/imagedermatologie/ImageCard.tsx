@@ -10,7 +10,6 @@ interface ImageCardProps {
     publisher: string;
     img: string;
     date: string;
-    diseaseId: string
   };
 }
 

@@ -6,7 +6,7 @@ export const ImageList = [
       "publisher": "Dermatology Society",
       "img": "https://n9.cl/wllk5",
       "date": "2023-05-12",
-      "diseaseId": "1"
+      "diseaseTitle": "Eczema"
   },
   {
       "id": "002",
@@ -15,7 +15,7 @@ export const ImageList = [
       "publisher": "Dermatology Association",
       "img": "https://n9.cl/vuib0",
       "date": "2023-08-19",
-      "diseaseId": "2"
+      "diseaseTitle": "Psoriasis"
   },
   {
       "id": "003",
@@ -24,7 +24,7 @@ export const ImageList = [
       "publisher": "SkinCare Journal",
       "img": "https://n9.cl/xe2k7",
       "date": "2023-10-02",
-      "diseaseId": "3"
+      "diseaseTitle": "Acne"
   },
   {
       "id": "004",
@@ -33,7 +33,7 @@ export const ImageList = [
       "publisher": "Skin Cancer Awareness Foundation",
       "img": "https://n9.cl/tk51oe",
       "date": "2023-11-15",
-      "diseaseId": "4"
+      "diseaseTitle": "Skin Cancer"
   },
   {
       "id": "005",
@@ -42,7 +42,7 @@ export const ImageList = [
       "publisher": "Dermatology Research Institute",
       "img": "https://n9.cl/eoank3",
       "date": "2023-09-28",
-      "diseaseId": "4"
+      "diseaseTitle": "Skin Cancer"
   },
   {
       "id": "006",
@@ -51,7 +51,7 @@ export const ImageList = [
       "publisher": "Contact Dermatitis Society",
       "img": "https://n9.cl/5q4kz",
       "date": "2023-07-20",
-      "diseaseId": "5"
+      "diseaseTitle": "Dermatitis"
   },
   {
       "id": "007",
@@ -60,7 +60,7 @@ export const ImageList = [
       "publisher": "Rosacea Foundation",
       "img": "https://n9.cl/icza0",
       "date": "2023-04-11",
-      "diseaseId": "6"
+      "diseaseTitle": "Rosacea"
   },
   {
       "id": "008",
@@ -69,7 +69,7 @@ export const ImageList = [
       "publisher": "Vitiligo Support Group",
       "img": "https://n9.cl/8t53g",
       "date": "2023-02-05",
-      "diseaseId": "7"
+      "diseaseTitle": "Vitiligo"
   },
   {
       "id": "009",
@@ -78,7 +78,7 @@ export const ImageList = [
       "publisher": "Allergy & Immunology Journal",
       "img": "https://n9.cl/wb8iy",
       "date": "2023-06-30",
-      "diseaseId": "8"
+      "diseaseTitle": "Hives"
   },
   {
       "id": "010",
@@ -87,7 +87,7 @@ export const ImageList = [
       "publisher": "Dermatology Clinic",
       "img": "https://n9.cl/6ycu0",
       "date": "2023-12-10",
-      "diseaseId": "9"
+      "diseaseTitle": "Benign Growths"
   },
   {
       "id": "011",
@@ -96,7 +96,7 @@ export const ImageList = [
       "publisher": "Skin Cancer Prevention Society",
       "img": "https://n9.cl/coq84",
       "date": "2023-11-02",
-      "diseaseId": "10"
+      "diseaseTitle": "Precancerous Lesions"
   },
   {
       "id": "012",
@@ -105,7 +105,7 @@ export const ImageList = [
       "publisher": "Dermatopathology Research Institute",
       "img": "https://n9.cl/gbnts",
       "date": "2023-09-18",
-      "diseaseId": "18"
+      "diseaseTitle": "Benign Tumors"
   },
   {
       "id": "013",
@@ -114,7 +114,7 @@ export const ImageList = [
       "publisher": "Lupus Foundation",
       "img": "https://n9.cl/sudi3",
       "date": "2023-08-04",
-      "diseaseId": "11"
+      "diseaseTitle": "Autoimmune Disorders"
   },
   {
       "id": "014",
@@ -123,7 +123,7 @@ export const ImageList = [
       "publisher": "Dermatology Academy",
       "img": "https://n9.cl/a9nu6",
       "date": "2023-10-20",
-      "diseaseId": "12"
+      "diseaseTitle": "Fungal Infections"
   },
   {
       "id": "015",
@@ -132,7 +132,7 @@ export const ImageList = [
       "publisher": "Infectious Diseases Journal",
       "img": "https://n9.cl/vd9hn",
       "date": "2023-03-25",
-      "diseaseId": "13"
+      "diseaseTitle": "Bacterial Infections"
   },
   {
       "id": "016",
@@ -141,7 +141,7 @@ export const ImageList = [
       "publisher": "Virology Research Center",
       "img": "https://n9.cl/5itv6",
       "date": "2023-07-12",
-      "diseaseId": "14"
+      "diseaseTitle": "Viral Infections"
   },
   {
       "id": "017",
@@ -150,7 +150,7 @@ export const ImageList = [
       "publisher": "Dermatology Review",
       "img": "https://n9.cl/gbnts",
       "date": "2023-09-18",
-      "diseaseId": "11"
+      "diseaseTitle": "Autoimmune Disorders"
   },
   {
       "id": "018",
@@ -159,7 +159,7 @@ export const ImageList = [
       "publisher": "Dermatology Association",
       "img": "https://n9.cl/vd9hn",
       "date": "2023-12-05",
-      "diseaseId": "12"
+      "diseaseTitle": "Fungal Infections"
   },
   {
       "id": "019",
@@ -168,7 +168,7 @@ export const ImageList = [
       "publisher": "Dermatology Clinic",
       "img": "https://n9.cl/5itv6",
       "date": "2023-07-22",
-      "diseaseId": "14"
+      "diseaseTitle": "Viral Infections"
   },
   {
       "id": "020",
@@ -177,7 +177,7 @@ export const ImageList = [
       "publisher": "Dermatology Journal",
       "img": "https://n9.cl/v5wsv",
       "date": "2023-06-15",
-      "diseaseId": "15"
+      "diseaseTitle": "Skin Rashes"
   },
   {
       "id": "021",
@@ -186,7 +186,7 @@ export const ImageList = [
       "publisher": "SkinCare Magazine",
       "img": "https://rebrand.ly/s73lmym",
       "date": "2023-08-28",
-      "diseaseId": "16"
+      "diseaseTitle": "Common Skin Conditions"
   },
   {
       "id": "022",
@@ -195,7 +195,7 @@ export const ImageList = [
       "publisher": "Hidradenitis Suppurativa Foundation",
       "img": "http://rb.gy/jdtj0v",
       "date": "2023-04-19",
-      "diseaseId": "17"
+      "diseaseTitle": "Chronic Skin Conditions"
   },
   {
       "id": "023",
@@ -204,7 +204,7 @@ export const ImageList = [
       "publisher": "Dermatology Society",
       "img": "https://n9.cl/eoank3",
       "date": "2023-11-30",
-      "diseaseId": "11"
+      "diseaseTitle": "Autoimmune Disorders"
   },
   {
       "id": "024",
@@ -213,7 +213,7 @@ export const ImageList = [
       "publisher": "Pediatric Dermatology Journal",
       "img": "https://n9.cl/5q4kz",
       "date": "2023-09-02",
-      "diseaseId": "13"
+      "diseaseTitle": "Bacterial Infections"
   },
   {
       "id": "025",
@@ -222,7 +222,7 @@ export const ImageList = [
       "publisher": "Dermatology Academy",
       "img": "https://n9.cl/6ycu0",
       "date": "2023-07-10",
-      "diseaseId": "21"
+      "diseaseTitle": "Benign Skin Conditions"
   },
   {
       "id": "026",
@@ -231,7 +231,7 @@ export const ImageList = [
       "publisher": "Pediatric Dermatology Clinic",
       "img": "https://n9.cl/coq84",
       "date": "2023-05-18",
-      "diseaseId": "16"
+      "diseaseTitle": "Common Skin Conditions"
   },
   {
       "id": "027",
@@ -240,7 +240,7 @@ export const ImageList = [
       "publisher": "Dermatology Review",
       "img": "https://n9.cl/gbnts",
       "date": "2023-08-22",
-      "diseaseId": "5"
+      "diseaseTitle": "Dermatitis"
   },
   {
       "id": "028",
@@ -249,7 +249,7 @@ export const ImageList = [
       "publisher": "Dermatology Research Institute",
       "img": "https://n9.cl/sudi3",
       "date": "2023-10-14",
-      "diseaseId": "19"
+      "diseaseTitle": "Benign Skin Growths"
   },
   {
       "id": "029",
@@ -258,7 +258,7 @@ export const ImageList = [
       "publisher": "Dermatology Journal",
       "img": "https://n9.cl/a9nu6",
       "date": "2023-11-25",
-      "diseaseId": "22"
+      "diseaseTitle": "Skin Conditions"
   },
   {
       "id": "030",
@@ -267,6 +267,6 @@ export const ImageList = [
       "publisher": "Hair Loss Association",
       "img": "https://n9.cl/vd9hn",
       "date": "2023-09-08",
-      "diseaseId": "20"
+      "diseaseTitle": "Hair Disorders"
   }
 ];

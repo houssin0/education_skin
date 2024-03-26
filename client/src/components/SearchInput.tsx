@@ -9,7 +9,7 @@ interface Image {
   publisher: string;
   img: string;
   date: string;
-  diseaseId: string;
+  diseaseTitle: string;
 }
 
 interface Props {

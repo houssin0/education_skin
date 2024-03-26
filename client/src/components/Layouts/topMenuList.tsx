@@ -13,7 +13,7 @@ const index = [
   },
   {
     title: "Disease Grid",
-    Icon: Icons.DiseaseIcon,
+    Icon: Icons.DiseaseGrid,
     path: "/dashboard/disease-grid",
   },
   {

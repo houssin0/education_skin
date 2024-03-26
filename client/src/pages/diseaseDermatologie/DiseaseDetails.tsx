@@ -15,10 +15,10 @@ const DiseaseDetails: FC = () => {
   };
 
   // Find the selected disease details
-  const selectedDisease = DiseaseList.find(item => item.id === disease.id);
+  const selectedDisease = DiseaseList.find(item => item.title === disease.title);
 
   // Filter the images based on the selected disease id
-  const filteredImages = ImageList.filter(image => image.diseaseId === disease.id);
+  const filteredImages = ImageList.filter(image => image.diseaseTitle === disease.title);
 
   return (
     <Box p={3}>
@@ -36,9 +36,6 @@ const DiseaseDetails: FC = () => {
           <Divider sx={{ my: 3 }} />
         </>
       )}
-      <Typography variant="h5" gutterBottom>
-        All Images
-      </Typography>
       <Grid container spacing={3}>
         {filteredImages.map((image, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
